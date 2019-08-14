@@ -1,0 +1,21 @@
+<div class="container">
+  <div><form [formGroup]="userlogin">
+    <div class="row">
+      <label> UserName</label>
+      <input class="form-control form-control-sm rounded-0"  type="text" placeholder="Please enter first name" formControlName="userName" >
+      <div *ngIf="userlogin.controls['userName'].invalid && userlogin.controls['userName'].errors.required && userlogin.controls['userName'].touched" class="alert alert-danger">Email is required.</div>
+    </div>
+    <div class="row">
+      <label>Password</label>
+      <input class="form-control form-control-sm rounded-0"  placeholder="Please enter last name" type="text" formControlName="password">
+      <div *ngIf="userlogin.controls['password'].invalid && userlogin.controls['password'].errors.required && userlogin.controls['password'].touched" class="alert alert-danger">Password is required</div>
+    </div>
+    <!-- <div  *ngIf="!isEdit" class="row button">  -->
+      <div>
+      <button (click)="signUp()"><a [routerLink]="['/signup']">Not a Member? Sign up</a></button>
+      <button class="btn btn-primary float-right reset" (click)="login()">Login</button>
+    </div>
+      <!-- </div> -->
+  </form>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="container">
+    <div><form [formGroup]="usertransaction">
+      <div class="row">
+        <label>Transaction ID</label>
+        <input class="form-control form-control-sm rounded-0"  type="text" placeholder="Please enter employee id" formControlName="homecountry">
+        <div *ngIf="useradd.controls['homecountry'].invalid && useradd.controls['homecountry'].errors.required && useradd.controls['homecountry'].touched" class="alert alert-danger">Home Country is required</div>
+      </div>
+      <button (click)='showsender()'>Show Sender Details</button>
+   <div *ngIf='flag'>     
+      <table>
+        <thead>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Home Country</th>
+        </thead>
+        <tbody>
+            <tr>
+              <td>{{loggedUser.userName}}</td>
+              <td>{{loggedUser.Email}}</td>
+              <td>{{loggedUser.homecountry}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+
+<hr>
+<button (click)='showreceiver()'>Select Receiver </button>
+  <div *ngIf='flag1'>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+
+          <label for="receiverList">Order</label>
+          <select formControlName="receiverList" id="receiverList">
+            <option *ngFor="let receiver of receiverList; let i = index" [value]="receiver.firstName">
+              {{receiver.firstName}}
+            </option>
+          </select>
+        
+          <button>submit</button>
+        </form>
+  </div>
+
+
+      <div class="row">
+          <label>Note</label>
+          <input class="form-control form-control-sm rounded-0"  placeholder="Please enter last name" type="text" formControlName="note">
+          <div *ngIf="useradd.controls['note'].invalid && useradd.controls['note'].errors.required && useradd.controls['note'].touched" class="alert alert-danger">Note is required</div>
+      </div>
+      <div class="row">
+        <label>Amount</label>
+        <input class="form-control form-control-sm rounded-0"  placeholder="Please enter last name" type="text" formControlName="amount">
+        <div *ngIf="useradd.controls['amount'].invalid && useradd.controls['amount'].errors.required && useradd.controls['amount'].touched" class="alert alert-danger">amount is required</div>
+      </div>
+
+
+      <div>
+<!-- <div  *ngIf="!isEdit" class="row button">  -->
+        <button class="btn btn-primary float-right" disabled={{flag1}} (click)="send()">Send</button>
+        <button type="reset">Reset</a></button>
+      </div>
+    </form>
+    </div>
+  </div>
+
+
+
+
+
+        <!-- <div class="row">
+        <label>UserName</label>
+        <input class="form-control form-control-sm rounded-0"  placeholder="Please enter last name" type="text" formControlName="userName">
+        <div *ngIf="useradd.controls['userName'].invalid && useradd.controls['userName'].errors.required && useradd.controls['userName'].touched" class="alert alert-danger">UserName is required</div>
+      </div>
+
+        
+      <div class="row">
+          <label>Email</label>
+          <input class="form-control form-control-sm rounded-0"  placeholder="Please enter last name" type="email" formControlName="email">
+          <div *ngIf="useradd.controls['email'].invalid && useradd.controls['email'].errors.required && useradd.controls['email'].touched" class="alert alert-danger">Email is required</div>
+        </div>
+      <div>
+
+      <div class="row">
+          <label>Country</label>
+          <input class="form-control form-control-sm rounded-0"  placeholder="Please enter last name" type="text" formControlName="country">
+          <div *ngIf="useradd.controls['country'].invalid && useradd.controls['country'].errors.required && useradd.controls['country'].touched" class="alert alert-danger">Country is required</div>
+        </div>
+      <div> -->
